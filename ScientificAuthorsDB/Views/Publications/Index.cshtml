@@ -4,7 +4,7 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>📄 Научни публикации</h2>
+    <h2>Научни публикации</h2>
     <a asp-action="Create" class="btn btn-success">+ Нова публикация</a>
 </div>
 
@@ -33,7 +33,7 @@
             <div class="card h-100 border-start border-primary border-4 shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title fw-bold text-dark">@pub.Title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">📅 @pub.Year | @pub.PublicationType</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">@pub.Year | @pub.PublicationType</h6>
                     <p class="card-text">
                         <strong>Автори:</strong>
                         @string.Join(", ", pub.AuthorPublications.Select(ap => ap.Author.FullName))

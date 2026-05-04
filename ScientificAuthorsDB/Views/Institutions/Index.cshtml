@@ -4,7 +4,7 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>🏛 Научни институции</h2>
+    <h2>Научни институции</h2>
     <a asp-action="Create" class="btn btn-success">+ Нова институция</a>
 </div>
 
@@ -16,7 +16,7 @@
         <input type="text" name="searchCountry" value="@ViewData["SearchCountry"]" class="form-control" placeholder="Държава..." />
     </div>
     <div class="col-md-3 d-flex gap-2">
-        <button type="submit" class="btn btn-primary w-100">🔍 Търси</button>
+        <button type="submit" class="btn btn-primary w-100">Търси</button>
         <a asp-action="Index" class="btn btn-outline-secondary">Изчисти</a>
     </div>
 </form>
@@ -41,8 +41,8 @@
                 <td><span class="badge bg-info text-dark">@item.AuthorInstitutions.Count учени</span></td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Детайли</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">✏️</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">🗑</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Редактирай</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Изтрий</a>
                 </td>
             </tr>
         }

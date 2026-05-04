@@ -3,7 +3,7 @@
     ViewData["Title"] = "Нов автор";
 }
 
-<h2>👤 Нов автор</h2>
+<h2>Нов автор</h2>
 <hr />
 <form asp-action="Create" method="post" class="row g-3">
     <div asp-validation-summary="ModelOnly" class="col-12 text-danger"></div>
@@ -30,11 +30,11 @@
         <input asp-for="BirthYear" class="form-control" />
     </div>
     <div class="col-12">
-        <label class="form-label fw-bold">Институции (задръж Ctrl за избор на повече от една)</label>
+        <label class="form-label fw-bold">Институции (задръжте Ctrl за избор на повече от една)</label>
         <select name="selectedInstitutions" asp-items="ViewBag.Institutions" class="form-select" multiple size="5"></select>
     </div>
     <div class="col-12 mt-4">
-        <button type="submit" class="btn btn-success">💾 Запази</button>
+        <button type="submit" class="btn btn-success">Запази</button>
         <a asp-action="Index" class="btn btn-secondary">Отказ</a>
     </div>
 </form>

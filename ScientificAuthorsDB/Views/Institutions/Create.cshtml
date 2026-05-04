@@ -3,7 +3,7 @@
     ViewData["Title"] = "Управление на институция";
 }
 
-<h2>🏛 Институция</h2>
+<h2>Институция</h2>
 <hr />
 <form asp-action="@(ViewContext.RouteData.Values["action"])" method="post" class="row g-3">
     <div class="col-md-12">
@@ -28,7 +28,7 @@
         <input asp-for="Website" class="form-control" />
     </div>
     <div class="col-12 mt-4">
-        <button type="submit" class="btn btn-primary">💾 Запази</button>
+        <button type="submit" class="btn btn-primary">Запази</button>
         <a asp-action="Index" class="btn btn-secondary">Отказ</a>
     </div>
 </form>

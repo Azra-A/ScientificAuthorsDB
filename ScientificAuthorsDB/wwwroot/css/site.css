@@ -1,31 +1,40 @@
+/* Sticky Footer магия */
 html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+main {
+    flex: 1; /* Това разтяга средната част и избутва футъра долу */
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* Стил за интерактивни карти */
+.hover-zoom {
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    border-top: 4px solid transparent;
+}
+
+    .hover-zoom:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        background-color: #fdfdfd !important;
+    }
+
+/* Различни цветове за акцент на всяка кутия */
+.border-authors:hover {
+    border-top-color: #0d6efd;
+}
+
+.border-inst:hover {
+    border-top-color: #0dcaf0;
+}
+
+.border-pub:hover {
+    border-top-color: #198754;
 }

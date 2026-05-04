@@ -1,8 +1,60 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Начало";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Hero Секция -->
+<div class="hero-section text-center py-5 mb-5 bg-white border-bottom shadow-sm">
+    <div class="container py-5">
+        <h1 class="display-4 fw-bold text-dark mb-3">Информационна система за научна дейност</h1>
+        <p class="lead text-muted mb-4 mx-auto" style="max-width: 800px;">
+            Управление и анализ на академични публикации, институционални връзки и изследователски капацитет.
+            Платформата осигурява прозрачност и лесен достъп до научните постижения.
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <a asp-controller="Authors" asp-action="Index" class="btn btn-primary btn-lg px-5 shadow-sm">Списък на автори</a>
+            <a asp-controller="Publications" asp-action="Index" class="btn btn-outline-secondary btn-lg px-5">Публикации</a>
+        </div>
+    </div>
 </div>
+
+<!-- Основни навигационни карти -->
+<div class="container mb-5">
+    <div class="row text-center g-4">
+        <!-- Карта: Автори -->
+        <div class="col-md-4">
+            <a asp-controller="Authors" asp-action="Index" class="text-decoration-none text-dark d-block h-100">
+                <div class="card h-100 border-0 shadow-sm hover-zoom p-4 bg-white">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">Автори</h4>
+                        <p class="text-muted">Пълен каталог на изследователите с техните профили и научна история.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Карта: Институции -->
+        <div class="col-md-4">
+            <a asp-controller="Institutions" asp-action="Index" class="text-decoration-none text-dark d-block h-100">
+                <div class="card h-100 border-0 shadow-sm hover-zoom p-4 bg-white">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">Институции</h4>
+                        <p class="text-muted">База данни за университети и научноизследователски организации.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Карта: Публикации -->
+        <div class="col-md-4 border-0">
+            <a asp-controller="Publications" asp-action="Index" class="text-decoration-none text-dark d-block h-100">
+                <div class="card h-100 border-0 shadow-sm hover-zoom p-4 bg-white">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">Публикации</h4>
+                        <p class="text-muted">Архив от научни трудове, филтрирани по област и вид на изданието.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+

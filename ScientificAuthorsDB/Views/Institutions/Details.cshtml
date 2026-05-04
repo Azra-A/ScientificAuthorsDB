@@ -1,0 +1,40 @@
+﻿@model ScientificAuthorsDB.Models.Institution
+@{
+    ViewData["Title"] = "Детайли за институция";
+}
+
+<h2>🏛 @Model.Name</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">Държава</dt>
+            <dd class="col-sm-8">@Model.Country</dd>
+            <dt class="col-sm-4">Град</dt>
+            <dd class="col-sm-8">@Model.City</dd>
+            <dt class="col-sm-4">Тип</dt>
+            <dd class="col-sm-8">@Model.Type</dd>
+            <dt class="col-sm-4">Уебсайт</dt>
+            <dd class="col-sm-8"><a href="@Model.Website" target="_blank">@Model.Website</a></dd>
+        </dl>
+    </div>
+</div>
+
+<h4 class="mt-4">👥 Учени, свързани с институцията</h4>
+<table class="table table-sm mt-2">
+    <thead class="table-light"><tr><th>Име</th><th>Роля</th></tr></thead>
+    <tbody>
+        @foreach (var ai in Model.AuthorInstitutions)
+        {
+            <tr>
+                <td>@ai.Author.FullName</td>
+                <td>@ai.Role</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактирай</a>
+    <a asp-action="Index" class="btn btn-secondary">Назад</a>
+</div>

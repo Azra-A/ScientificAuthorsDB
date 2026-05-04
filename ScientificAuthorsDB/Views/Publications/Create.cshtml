@@ -1,0 +1,56 @@
+﻿@model ScientificAuthorsDB.Models.Publication
+@{
+    ViewData["Title"] = "Нова публикация";
+}
+
+<h2>📄 Добавяне на научна публикация</h2>
+<hr />
+<form asp-action="Create" method="post" class="row g-3">
+    <div asp-validation-summary="ModelOnly" class="col-12 text-danger"></div>
+
+    <div class="col-md-12">
+        <label asp-for="Title" class="form-label fw-bold">Заглавие</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-12">
+        <label asp-for="Abstract" class="form-label fw-bold">Резюме</label>
+        <textarea asp-for="Abstract" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Year" class="form-label fw-bold">Година</label>
+        <input asp-for="Year" class="form-control" type="number" />
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="PublicationType" class="form-label fw-bold">Тип</label>
+        <select asp-for="PublicationType" class="form-select">
+            <option value="Научна статия">Научна статия</option>
+            <option value="Монография">Монография</option>
+            <option value="Доклад">Доклад</option>
+            <option value="Тезис">Тезис</option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Doi" class="form-label fw-bold">DOI номер</label>
+        <input asp-for="Doi" class="form-control" />
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-bold text-primary">Избери автори (задръж Ctrl)</label>
+        <select name="selectedAuthors" asp-items="ViewBag.Authors" class="form-select" multiple size="6"></select>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-bold text-success">Избери научни области (задръж Ctrl)</label>
+        <select name="selectedFields" asp-items="ViewBag.Fields" class="form-select" multiple size="6"></select>
+    </div>
+
+    <div class="col-12 mt-4">
+        <button type="submit" class="btn btn-success px-4">💾 Запази публикацията</button>
+        <a asp-action="Index" class="btn btn-secondary px-4">Отказ</a>
+    </div>
+</form>

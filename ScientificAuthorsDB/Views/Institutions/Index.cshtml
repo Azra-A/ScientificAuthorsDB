@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ScientificAuthorsDB.Models.Institution>
+@{
+    ViewData["Title"] = "Институции";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>🏛 Научни институции</h2>
+    <a asp-action="Create" class="btn btn-success">+ Нова институция</a>
+</div>
+
+<form asp-action="Index" method="get" class="row g-2 mb-4 p-3 bg-light rounded">
+    <div class="col-md-5">
+        <input type="text" name="searchName" value="@ViewData["SearchName"]" class="form-control" placeholder="Търси по име на институция..." />
+    </div>
+    <div class="col-md-4">
+        <input type="text" name="searchCountry" value="@ViewData["SearchCountry"]" class="form-control" placeholder="Държава..." />
+    </div>
+    <div class="col-md-3 d-flex gap-2">
+        <button type="submit" class="btn btn-primary w-100">🔍 Търси</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Изчисти</a>
+    </div>
+</form>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Име</th>
+            <th>Локация</th>
+            <th>Тип</th>
+            <th>Автори</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><strong>@item.Name</strong></td>
+                <td>@item.City, @item.Country</td>
+                <td>@item.Type</td>
+                <td><span class="badge bg-info text-dark">@item.AuthorInstitutions.Count учени</span></td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Детайли</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">✏️</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">🗑</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

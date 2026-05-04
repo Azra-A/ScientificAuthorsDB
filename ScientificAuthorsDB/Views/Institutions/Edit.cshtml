@@ -1,0 +1,55 @@
+﻿@model ScientificAuthorsDB.Models.Institution
+@{
+    ViewData["Title"] = "Редактиране на институция";
+}
+
+<h2>✏️ Редактиране на институция</h2>
+<hr />
+
+<form asp-action="Edit" method="post" class="row g-3">
+    <!-- КРИТИЧНО ВАЖНО: Скрито поле за Id, за да знае базата кой запис обновяваме -->
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="ModelOnly" class="col-12 text-danger"></div>
+
+    <div class="col-md-12">
+        <label asp-for="Name" class="form-label">Име на институцията</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Country" class="form-label">Държава</label>
+        <input asp-for="Country" class="form-control" />
+        <span asp-validation-for="Country" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="City" class="form-label">Град</label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Type" class="form-label">Тип (Университет, БАН и т.н.)</label>
+        <input asp-for="Type" class="form-control" />
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Website" class="form-label">Уебсайт</label>
+        <input asp-for="Website" class="form-control" />
+        <span asp-validation-for="Website" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 mt-4">
+        <button type="submit" class="btn btn-warning">💾 Запази промените</button>
+        <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,53 @@
+﻿@model ScientificAuthorsDB.Models.Author
+@{
+    ViewData["Title"] = "Детайли за автор";
+}
+
+<h2>👤 @Model.FullName</h2>
+<hr />
+<div class="row mb-4">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">Имейл</dt>
+            <dd class="col-sm-8">@Model.Email</dd>
+            <dt class="col-sm-4">ORCID</dt>
+            <dd class="col-sm-8">@Model.OrcidId</dd>
+            <dt class="col-sm-4">Година на рождение</dt>
+            <dd class="col-sm-8">@Model.BirthYear</dd>
+        </dl>
+    </div>
+</div>
+
+<h5>🏛 Институции</h5>
+<ul>
+    @foreach (var ai in Model.AuthorInstitutions)
+    {
+        <li>@ai.Institution.Name @(ai.Role != null ? $"— {ai.Role}" : "")</li>
+    }
+</ul>
+
+<h5 class="mt-4">📄 Публикации</h5>
+<table class="table table-sm table-bordered">
+    <thead class="table-light"><tr><th>Заглавие</th><th>Година</th><th>Роля</th><th>Области</th></tr></thead>
+    <tbody>
+        @foreach (var ap in Model.AuthorPublications)
+        {
+            <tr>
+                <td>@ap.Publication.Title</td>
+                <td>@ap.Publication.Year</td>
+                <td>@ap.ContributionRole</td>
+                <td>
+                    @foreach (var pf in ap.Publication.PublicationFields)
+                    {
+                        <span class="badge bg-success me-1">@pf.ResearchField.Name</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактирай</a>
+    <a asp-action="Index" class="btn btn-secondary">Назад</a>
+</div>

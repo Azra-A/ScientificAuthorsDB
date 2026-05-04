@@ -1,0 +1,49 @@
+﻿@model ScientificAuthorsDB.Models.Publication
+@{
+    ViewData["Title"] = "Редактирай публикация";
+}
+
+<h2>✏️ Редактиране на публикация</h2>
+<hr />
+<form asp-action="Edit" method="post" class="row g-3">
+    <input type="hidden" asp-for="Id" />
+    
+    <div class="col-md-12">
+        <label asp-for="Title" class="form-label fw-bold">Заглавие</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="col-md-12">
+        <label asp-for="Abstract" class="form-label fw-bold">Резюме</label>
+        <textarea asp-for="Abstract" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Year" class="form-label fw-bold">Година</label>
+        <input asp-for="Year" class="form-control" />
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="PublicationType" class="form-label fw-bold">Тип</label>
+        <select asp-for="PublicationType" class="form-select">
+            <option value="Научна статия">Научна статия</option>
+            <option value="Монография">Монография</option>
+            <option value="Доклад">Доклад</option>
+        </select>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-bold">Автори</label>
+        <select name="selectedAuthors" asp-items="ViewBag.Authors" class="form-select" multiple size="6"></select>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label fw-bold">Научни области</label>
+        <select name="selectedFields" asp-items="ViewBag.Fields" class="form-select" multiple size="6"></select>
+    </div>
+
+    <div class="col-12 mt-4">
+        <button type="submit" class="btn btn-warning">💾 Обнови данните</button>
+        <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+    </div>
+</form>

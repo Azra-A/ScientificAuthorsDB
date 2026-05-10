@@ -1,0 +1,16 @@
+﻿@model ScientificAuthorsDB.Models.Institution
+@{
+    ViewData["Title"] = "Изтриване";
+}
+
+<h2>Изтриване на институция</h2>
+<div class="alert alert-danger mt-3">
+    <h5>Сигурен ли си, че искаш да изтриеш <strong>@Model.Name</strong>?</h5>
+    <p>Това действие е необратимо.</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Да, изтрий</button>
+    <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+</form>

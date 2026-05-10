@@ -1,59 +1,71 @@
 ﻿@model ScientificAuthorsDB.Models.Publication
+
 @{
-    ViewData["Title"] = "Нова публикация";
+    ViewData["Title"] = "Create";
 }
 
-<h2>Добавяне на научна публикация</h2>
+<h1>Create</h1>
+
+<h4>Publication</h4>
 <hr />
-<form asp-action="Create" method="post" class="row g-3">
-    <div asp-validation-summary="ModelOnly" class="col-12 text-danger"></div>
-
-    <div class="col-md-12">
-        <label asp-for="Title" class="form-label fw-bold">Заглавие</label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
-
-    <div class="col-md-12">
-        <label asp-for="Abstract" class="form-label fw-bold">Резюме</label>
-        <textarea asp-for="Abstract" class="form-control" rows="4"></textarea>
-    </div>
-
+<div class="row">
     <div class="col-md-4">
-        <label asp-for="Year" class="form-label fw-bold">Година</label>
-        <input asp-for="Year" class="form-control" type="number" />
-    </div>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Abstract" class="control-label"></label>
+                <textarea asp-for="Abstract" class="form-control"></textarea>
+                <span asp-validation-for="Abstract" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doi" class="control-label"></label>
+                <input asp-for="Doi" class="form-control" />
+                <span asp-validation-for="Doi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Journal" class="control-label"></label>
+                <input asp-for="Journal" class="form-control" />
+                <span asp-validation-for="Journal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublicationType" class="control-label"></label>
+                <input asp-for="PublicationType" class="form-control" />
+                <span asp-validation-for="PublicationType" class="text-danger"></span>
+            </div>
 
-    <div class="col-md-4">
-        <label asp-for="PublicationType" class="form-label fw-bold">Тип</label>
-        <select asp-for="PublicationType" class="form-select">
-            <option value="">-- Изберете тип --</option>
-            <option value="Научна статия">Научна статия</option>
-            <option value="Монография">Монография</option>
-            <option value="Доклад от конференция">Доклад от конференция</option>
-            <option value="Книга">Книга</option>
-            <option value="Дисертация">Дисертация</option>
-        </select>
-        <span asp-validation-for="PublicationType" class="text-danger"></span>
-    </div>
+            <div class="form-group mt-3">
+                <label class="control-label">Автори (задръж Ctrl за повече)</label>
+                <select name="selectedAuthors" asp-items="ViewBag.Authors"
+                        class="form-control" multiple size="5"></select>
+            </div>
 
-    <div class="col-md-4">
-        <label asp-for="Doi" class="form-label fw-bold">DOI номер</label>
-        <input asp-for="Doi" class="form-control" />
-    </div>
+            <div class="form-group mt-3">
+                <label class="control-label">Научни области (задръж Ctrl за повече)</label>
+                <select name="selectedFields" asp-items="ViewBag.Fields"
+                        class="form-control" multiple size="5"></select>
+            </div>
 
-    <div class="col-md-6">
-        <label class="form-label fw-bold text-primary">Избери автори (задръж Ctrl)</label>
-        <select name="selectedAuthors" asp-items="ViewBag.Authors" class="form-select" multiple size="6"></select>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
 
-    <div class="col-md-6">
-        <label class="form-label fw-bold text-success">Избери научни области (задръж Ctrl)</label>
-        <select name="selectedFields" asp-items="ViewBag.Fields" class="form-select" multiple size="6"></select>
-    </div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-    <div class="col-12 mt-4">
-        <button type="submit" class="btn btn-success px-4">Запази публикацията</button>
-        <a asp-action="Index" class="btn btn-secondary px-4">Отказ</a>
-    </div>
-</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

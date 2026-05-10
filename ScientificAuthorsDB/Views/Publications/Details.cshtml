@@ -1,56 +1,54 @@
 ﻿@model ScientificAuthorsDB.Models.Publication
+
 @{
-    ViewData["Title"] = "Детайли за публикация";
+    ViewData["Title"] = "Details";
 }
 
-<div class="container py-4">
-    <div class="row">
-        <div class="col-lg-8">
-            <h2 class="fw-bold">@Model.Title</h2>
-            <p class="text-muted fs-5">@Model.Journal, @Model.Year г.</p>
-            <hr />
-            
-            <h5>Резюме</h5>
-            <p class="text-justify border-start ps-3 py-2 bg-light">@Model.Abstract</p>
+<h1>Details</h1>
 
-            <div class="mt-4">
-                <h5>Автори</h5>
-                <div class="list-group">
-                    @foreach (var ap in Model.AuthorPublications)
-                    {
-                        <a asp-controller="Authors" asp-action="Details" asp-route-id="@ap.AuthorId" class="list-group-item list-group-item-action">
-                            <strong>@ap.Author.FullName</strong> <span class="text-muted ms-2">(@ap.ContributionRole)</span>
-                        </a>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4">
-            <div class="card bg-light border-0 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">Метаданни</h5>
-                    <dl class="row mb-0">
-                        <dt class="col-sm-4">DOI</dt>
-                        <dd class="col-sm-8 text-truncate">@Model.Doi</dd>
-                        
-                        <dt class="col-sm-4">Тип</dt>
-                        <dd class="col-sm-8">@Model.PublicationType</dd>
-
-                        <dt class="col-sm-4">Области</dt>
-                        <dd class="col-sm-8">
-                            @foreach (var pf in Model.PublicationFields)
-                            {
-                                <span class="badge bg-success d-block mb-1">@pf.ResearchField.Name</span>
-                            }
-                        </dd>
-                    </dl>
-                </div>
-            </div>
-            <div class="mt-3 d-grid gap-2">
-                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактирай</a>
-                <a asp-action="Index" class="btn btn-secondary">Назад към списъка</a>
-            </div>
-        </div>
-    </div>
+<div>
+    <h4>Publication</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Abstract)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Abstract)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Doi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Doi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Journal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Journal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PublicationType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PublicationType)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>

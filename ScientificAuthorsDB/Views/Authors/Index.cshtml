@@ -1,19 +1,16 @@
 ﻿@model IEnumerable<ScientificAuthorsDB.Models.Author>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Автори";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Научни автори</h2>
+    <a asp-action="Create" class="btn btn-success">+ Нов автор</a>
+</div>
 
 <form asp-action="Index" method="get" class="row g-2 mb-4 p-3 bg-light rounded">
     <div class="col-md-4">
-        <input type="text" name="searchName" value="@ViewData["SearchName"]"
-               class="form-control" placeholder="Търси по име..." />
+        <input type="text" name="searchName" value="@ViewData["SearchName"]" class="form-control" placeholder="Търси по име..." />
     </div>
     <div class="col-md-3">
         <select name="searchField" class="form-select" asp-items="ViewBag.Fields">
@@ -21,60 +18,56 @@
         </select>
     </div>
     <div class="col-md-2">
-        <input type="number" name="searchYear" value="@ViewData["SearchYear"]"
-               class="form-control" placeholder="Година" />
+        <input type="number" name="searchYear" value="@ViewData["SearchYear"]" class="form-control" placeholder="Година" />
     </div>
     <div class="col-md-3 d-flex gap-2">
-        <button type="submit" class="btn btn-primary">🔍 Търси</button>
+        <button type="submit" class="btn btn-primary">Търси</button>
         <a asp-action="Index" class="btn btn-outline-secondary">Изчисти</a>
     </div>
 </form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrcidId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BirthYear)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrcidId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthYear)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Няма намерени автори.</div>
 }
-    </tbody>
-</table>
+else
+{
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Автор</th>
+                <th>Имейл</th>
+                <th>Институции</th>
+                <th>Публикации</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>
+                        <strong>@a.FullName</strong>
+                        @if (a.BirthYear.HasValue)
+                        {
+                            <br /><small class="text-muted">р. @a.BirthYear</small>
+                        }
+                    </td>
+                    <td>@a.Email</td>
+                    <td>
+                        @foreach (var ai in a.AuthorInstitutions)
+                        {
+                            <span class="badge bg-info text-dark me-1">@ai.Institution.Name</span>
+                        }
+                    </td>
+                    <td><span class="badge bg-secondary">@a.AuthorPublications.Count</span></td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@a.Id" class="btn btn-sm btn-info">Детайли</a>
+                        <a asp-action="Edit" asp-route-id="@a.Id" class="btn btn-sm btn-warning">Редактирай</a>
+                        <a asp-action="Delete" asp-route-id="@a.Id" class="btn btn-sm btn-danger">Изтрий</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,57 +1,40 @@
 ﻿@model ScientificAuthorsDB.Models.Author
-
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Нов автор";
 }
 
-<h1>Create</h1>
-
-<h4>Author</h4>
+<h2>Нов автор</h2>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrcidId" class="control-label"></label>
-                <input asp-for="OrcidId" class="form-control" />
-                <span asp-validation-for="OrcidId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BirthYear" class="control-label"></label>
-                <input asp-for="BirthYear" class="form-control" />
-                <span asp-validation-for="BirthYear" class="text-danger"></span>
-            </div>
-            <div class="form-group mt-3">
-                <label class="control-label">Институции (задръж Ctrl за повече)</label>
-                <select name="selectedInstitutions" asp-items="ViewBag.Institutions" class="form-control" multiple size="5"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<form asp-action="Create" method="post" class="row g-3">
+    <div asp-validation-summary="ModelOnly" class="col-12 text-danger"></div>
+    <div class="col-md-6">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <div class="col-md-6">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label asp-for="OrcidId" class="form-label"></label>
+        <input asp-for="OrcidId" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label asp-for="BirthYear" class="form-label"></label>
+        <input asp-for="BirthYear" class="form-control" />
+    </div>
+    <div class="col-12">
+        <label class="form-label fw-bold">Институции (задръжте Ctrl за избор на повече от една)</label>
+        <select name="selectedInstitutions" asp-items="ViewBag.Institutions" class="form-select" multiple size="5"></select>
+    </div>
+    <div class="col-12 mt-4">
+        <button type="submit" class="btn btn-success">Запази</button>
+        <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+    </div>
+</form>

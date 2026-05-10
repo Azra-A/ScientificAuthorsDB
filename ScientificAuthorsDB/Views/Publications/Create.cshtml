@@ -27,11 +27,14 @@
     <div class="col-md-4">
         <label asp-for="PublicationType" class="form-label fw-bold">Тип</label>
         <select asp-for="PublicationType" class="form-select">
+            <option value="">-- Изберете тип --</option>
             <option value="Научна статия">Научна статия</option>
             <option value="Монография">Монография</option>
-            <option value="Доклад">Доклад</option>
-            <option value="Тезис">Тезис</option>
+            <option value="Доклад от конференция">Доклад от конференция</option>
+            <option value="Книга">Книга</option>
+            <option value="Дисертация">Дисертация</option>
         </select>
+        <span asp-validation-for="PublicationType" class="text-danger"></span>
     </div>
 
     <div class="col-md-4">

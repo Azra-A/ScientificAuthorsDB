@@ -1,73 +1,54 @@
 ﻿@model ScientificAuthorsDB.Models.Publication
 
 @{
-    ViewData["Title"] = "Детайли за публикация";
+    ViewData["Title"] = "Details";
 }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <nav aria-label="breadcrumb" class="mb-4">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-action="Index">Публикации</a></li>
-                    <li class="breadcrumb-item active">Детайли</li>
-                </ol>
-            </nav>
+<h1>Details</h1>
 
-            <div class="card shadow border-0">
-                <div class="card-header bg-white border-bottom-0 pt-4 px-4">
-                    <h2 class="text-primary mb-1">@Model.Title</h2>
-                    <h5 class="text-muted">(@Model.Journal, @Model.Year г.)</h5>
-                </div>
-                
-                <div class="card-body px-4">
-                    <div class="row mb-4">
-                        <div class="col-sm-3 fw-bold text-secondary">DOI номер:</div>
-                        <div class="col-sm-9">
-                            @if (!string.IsNullOrEmpty(Model.Doi))
-                            {
-                                <a href="https://doi.org/@Model.Doi" target="_blank" class="text-decoration-none">
-                                    <i class="bi bi-link-45deg"></i> @Model.Doi
-                                </a>
-                            }
-                            else
-                            {
-                                <span class="text-muted italic">Няма наличен DOI</span>
-                            }
-                        </div>
-                    </div>
-
-                    <div class="row mb-4">
-                        <div class="col-sm-3 fw-bold text-secondary">Тип на труда:</div>
-                        <div class="col-sm-9">
-                            <span class="badge bg-info text-dark fs-6">@Model.PublicationType</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <h5 class="border-bottom pb-2"><i class="bi bi-card-text"></i> Резюме</h5>
-                        <p class="mt-3 text-justify" style="line-height: 1.6;">
-                            @if (!string.IsNullOrEmpty(Model.Abstract))
-                            {
-                                @Model.Abstract
-                            }
-                            else
-                            {
-                                <span class="text-muted">Авторът не е предоставил резюме за тази публикация.</span>
-                            }
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card-footer bg-light d-flex justify-content-between p-3">
-                    <a asp-action="Index" class="btn btn-outline-secondary">
-                        <i class="bi bi-arrow-left"></i> Назад към списъка
-                    </a>
-                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary px-4">
-                        <i class="bi bi-pencil-square"></i> Редактирай информацията
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+<div>
+    <h4>Publication</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Abstract)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Abstract)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Doi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Doi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Journal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Journal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PublicationType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PublicationType)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>

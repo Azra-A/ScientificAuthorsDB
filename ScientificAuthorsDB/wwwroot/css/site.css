@@ -42,3 +42,23 @@ main {
 .btn-outline-light:hover {
     color: #000000 !important;
 }
+
+/* режим за малък прозорец */
+@media (max-width: 991px) {
+    .navbar-nav {
+        align-items: center;
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar-nav .border-end {
+        border: none !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar-nav + .navbar-nav {
+        margin-top: 10px;
+        padding-bottom: 10px;
+    }
+}

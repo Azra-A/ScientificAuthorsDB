@@ -17,8 +17,9 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto text-uppercase small fw-semibold">
+                    <ul class="navbar-nav mx-auto text-uppercase small fw-semibold">
                         <li class="nav-item border-end border-secondary px-2">
                             <a class="nav-link" asp-controller="Authors" asp-action="Index">Автори</a>
                         </li>
@@ -30,7 +31,7 @@
                         </li>
                     </ul>
 
-                    <ul class="navbar-nav ms-3">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             @if (Context.Session.GetString("Mode") == "Admin")
                             {
@@ -48,7 +49,6 @@
                             }
                         </li>
                     </ul>
-
                 </div>
             </div>
         </nav>

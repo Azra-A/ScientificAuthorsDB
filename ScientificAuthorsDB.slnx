@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="ScientificAuthorsDB.Tests/ScientificAuthorsDB.Tests.csproj" Id="cd9cb2d8-cc2d-4d34-95ad-8ae447a38bb9" />
   <Project Path="ScientificAuthorsDB/ScientificAuthorsDB.csproj" />
 </Solution>

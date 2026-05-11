@@ -3,10 +3,13 @@ using ScientificAuthorsDB.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Добавяме поддръжка за MVC (Controllers и Views)
+// добавя се поддръжка за mvc - controllers и views
 builder.Services.AddControllersWithViews();
 
-// ТУК свързваме ApplicationDbContext с адреса от appsettings.json!
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
+
+// свързва се ApplicationDbContext с адреса от appsettings.json
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -23,6 +26,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(

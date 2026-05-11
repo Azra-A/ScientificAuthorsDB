@@ -21,5 +21,11 @@ namespace ScientificAuthorsDB.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult SetMode(string mode)
+        {
+            HttpContext.Session.SetString("Mode", mode);
+            return Redirect(Request.Headers["Referer"].ToString());
+        }
     }
 }

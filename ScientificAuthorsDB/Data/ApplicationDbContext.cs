@@ -8,7 +8,7 @@ namespace ScientificAuthorsDB.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
 
-        // самите таблици
+        // таблиците
         public DbSet<Author> Authors { get; set; }
         public DbSet<Institution> Institutions { get; set; }
         public DbSet<Publication> Publications { get; set; }
@@ -19,7 +19,7 @@ namespace ScientificAuthorsDB.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //  Many-to-Many таблиците
+            //  many-to-many таблиците
             modelBuilder.Entity<AuthorInstitution>()
                 .HasKey(ai => new { ai.AuthorId, ai.InstitutionId });
 
@@ -29,7 +29,7 @@ namespace ScientificAuthorsDB.Data
             modelBuilder.Entity<PublicationField>()
                 .HasKey(pf => new { pf.PublicationId, pf.ResearchFieldId });
 
-            // данни за тест
+            // данни за тестване
             modelBuilder.Entity<ResearchField>().HasData(
                 new ResearchField { Id = 1, Name = "Информатика" },
                 new ResearchField { Id = 2, Name = "Физика" },

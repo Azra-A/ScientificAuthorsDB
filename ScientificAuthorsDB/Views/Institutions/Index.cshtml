@@ -5,7 +5,10 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Научни институции</h2>
-    <a asp-action="Create" class="btn btn-success">+ Нова институция</a>
+    @if (Context.Session.GetString("Mode") == "Admin")
+    {
+        <a asp-action="Create" class="btn btn-success">+ Нова институция</a>
+    }
 </div>
 
 <form asp-action="Index" method="get" class="row g-2 mb-4 p-3 bg-light rounded">
@@ -41,8 +44,11 @@
                 <td><span class="badge bg-info text-dark">@item.AuthorInstitutions.Count учени</span></td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Детайли</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Редактирай</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Изтрий</a>
+                    @if (Context.Session.GetString("Mode") == "Admin")
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Редактирай</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Изтрий</a>
+                    }
                 </td>
             </tr>
         }

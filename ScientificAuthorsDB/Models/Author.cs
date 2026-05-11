@@ -23,14 +23,14 @@ namespace ScientificAuthorsDB.Models
         [Display(Name = "ORCID")]
         public string? OrcidId { get; set; }
 
-        [Display(Name = "Година на рождение")]
+        [Display(Name = "Година на раждане")]
         [Range(1900, 2010)]
         public int? BirthYear { get; set; }
 
         [Display(Name = "Пълно име")]
         public string FullName => $"{FirstName} {LastName}";
 
-        // Връзки с другите таблици (Many-to-Many)
+        // many-to-many връзки
         public ICollection<AuthorInstitution> AuthorInstitutions { get; set; } = new List<AuthorInstitution>();
         public ICollection<AuthorPublication> AuthorPublications { get; set; } = new List<AuthorPublication>();
     }

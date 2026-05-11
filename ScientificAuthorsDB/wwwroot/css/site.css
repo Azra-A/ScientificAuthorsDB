@@ -1,4 +1,4 @@
-/* Sticky Footer магия */
+/* sticky footer  */
 html {
     height: 100%;
 }
@@ -10,10 +10,10 @@ body {
 }
 
 main {
-    flex: 1; /* Това разтяга средната част и избутва футъра долу */
+    flex: 1; /* за бутане на футъра долу */
 }
 
-/* Стил за интерактивни карти */
+/* интерактивни карти */
 .hover-zoom {
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     cursor: pointer;
@@ -26,7 +26,7 @@ main {
         background-color: #fdfdfd !important;
     }
 
-/* Различни цветове за акцент на всяка кутия */
+/* различни цветове за акцент на всяка кутия */
 .border-authors:hover {
     border-top-color: #0d6efd;
 }
@@ -37,4 +37,8 @@ main {
 
 .border-pub:hover {
     border-top-color: #198754;
+}
+
+.btn-outline-light:hover {
+    color: #000000 !important;
 }

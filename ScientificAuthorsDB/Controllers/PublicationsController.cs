@@ -121,14 +121,14 @@ namespace ScientificAuthorsDB.Controllers
                 {
                     _context.Update(publication);
 
-                    // Изтриваме старите връзки
+                    // махат се старите връзки
                     var existingAuthors = _context.AuthorPublications.Where(ap => ap.PublicationId == id);
                     _context.AuthorPublications.RemoveRange(existingAuthors);
 
                     var existingFields = _context.PublicationFields.Where(pf => pf.PublicationId == id);
                     _context.PublicationFields.RemoveRange(existingFields);
 
-                    // Добавяме новите връзки
+                    // добавят се новите връзки
                     if (selectedAuthors != null)
                     {
                         foreach (var authorId in selectedAuthors)

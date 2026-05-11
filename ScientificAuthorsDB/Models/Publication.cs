@@ -16,7 +16,7 @@ namespace ScientificAuthorsDB.Models
         public string? Abstract { get; set; }
 
         [Display(Name = "Година")]
-        [Range(1900, 2100)]
+        [Range(1900, 2026, ErrorMessage = "Годината трябва да е между 1900 и 2026")]
         public int? Year { get; set; }
 
         [Display(Name = "DOI")]
@@ -25,8 +25,9 @@ namespace ScientificAuthorsDB.Models
         [Display(Name = "Журнал / Конференция")]
         public string? Journal { get; set; }
 
-        [Display(Name = "Тип")]
-        public string PublicationType { get; set; } = "Article";
+        [Required(ErrorMessage = "Типът на публикацията е задължителен")]
+        [Display(Name = "Тип публикация")]
+        public string PublicationType { get; set; } = "";
 
         public ICollection<AuthorPublication> AuthorPublications { get; set; } = new List<AuthorPublication>();
         public ICollection<PublicationField> PublicationFields { get; set; } = new List<PublicationField>();

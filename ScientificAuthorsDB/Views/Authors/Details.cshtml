@@ -12,7 +12,7 @@
             <dd class="col-sm-8">@Model.Email</dd>
             <dt class="col-sm-4">ORCID</dt>
             <dd class="col-sm-8">@Model.OrcidId</dd>
-            <dt class="col-sm-4">Година на рождение</dt>
+            <dt class="col-sm-4">Година на раждане</dt>
             <dd class="col-sm-8">@Model.BirthYear</dd>
         </dl>
     </div>
@@ -22,7 +22,7 @@
 <ul>
     @foreach (var ai in Model.AuthorInstitutions)
     {
-        <li>@ai.Institution.Name @(ai.Role != null ? $"— {ai.Role}" : "")</li>
+        <li>@ai.Institution.Name @(ai.Role != null ? $"- {ai.Role}" : "")</li>
     }
 </ul>
 

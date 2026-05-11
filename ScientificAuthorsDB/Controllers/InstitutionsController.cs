@@ -11,7 +11,7 @@ namespace ScientificAuthorsDB.Controllers
 
         public InstitutionsController(ApplicationDbContext context) => _context = context;
 
-        // Списък с институции + търсене
+        // списък с институции + търсене
         public async Task<IActionResult> Index(string? searchName, string? searchCountry)
         {
             ViewData["SearchName"] = searchName;

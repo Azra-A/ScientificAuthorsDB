@@ -5,7 +5,10 @@
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2>Научни публикации</h2>
-    <a asp-action="Create" class="btn btn-success">+ Нова публикация</a>
+    @if (Context.Session.GetString("Mode") == "Admin")
+    {
+        <a asp-action="Create" class="btn btn-success">+ Нова публикация</a>
+    }
 </div>
 
 <form asp-action="Index" method="get" class="row g-2 mb-4 p-3 bg-light rounded shadow-sm">
@@ -16,8 +19,10 @@
         <select name="searchType" class="form-select">
             <option value="">-- Всички типове --</option>
             <option value="Научна статия">Научна статия</option>
+            <option value="Доклад от конференция">Доклад от конференция</option>
             <option value="Монография">Монография</option>
-            <option value="Доклад">Доклад</option>
+            <option value="Книга">Книга</option>
+            <option value="Дисертация">Дисертация</option>
         </select>
     </div>
     <div class="col-md-3 d-flex gap-2">
@@ -46,9 +51,16 @@
                     </div>
                 </div>
                 <div class="card-footer bg-transparent border-top-0 d-flex gap-2">
-                    <a asp-action="Details" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-info">Детайли</a>
-                    <a asp-action="Edit" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-warning">Редактирай</a>
-                    <a asp-action="Delete" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-danger">Изтрий</a>
+                    @if (Context.Session.GetString("Mode") == "Admin")
+                    {
+                        <a asp-action="Details" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-info">Детайли</a>
+                        <a asp-action="Edit" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-warning">Редактирай</a>
+                        <a asp-action="Delete" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-danger">Изтрий</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Details" asp-route-id="@pub.Id" class="btn btn-outline-info w-100">Детайли</a>
+                    }
                 </div>
             </div>
         </div>

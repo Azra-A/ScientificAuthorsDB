@@ -48,6 +48,9 @@
 </table>
 
 <div class="mt-4">
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактирай</a>
+    @if (Context.Session.GetString("IsAdmin") == "true")
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактирай</a>
+    }
     <a asp-action="Index" class="btn btn-secondary">Назад</a>
 </div>

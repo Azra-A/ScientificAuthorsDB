@@ -3,13 +3,13 @@ using ScientificAuthorsDB.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// добавя се поддръжка за mvc - controllers и views
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
-// свързва се ApplicationDbContext с адреса от appsettings.json
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

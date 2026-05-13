@@ -8,7 +8,6 @@ namespace ScientificAuthorsDB.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
 
-        // таблиците
         public DbSet<Author> Authors { get; set; }
         public DbSet<Institution> Institutions { get; set; }
         public DbSet<Publication> Publications { get; set; }
@@ -19,7 +18,6 @@ namespace ScientificAuthorsDB.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //  many-to-many таблиците
             modelBuilder.Entity<AuthorInstitution>()
                 .HasKey(ai => new { ai.AuthorId, ai.InstitutionId });
 
@@ -96,13 +94,9 @@ namespace ScientificAuthorsDB.Data
                 new AuthorInstitution { AuthorId = 1, InstitutionId = 1, Role = "Старши изследовател", StartYear = 2016 },
                 new AuthorInstitution { AuthorId = 2, InstitutionId = 1, Role = "Главен инженер", StartYear = 2015 },
 
-                // Илия Полосухин
                 new AuthorInstitution { AuthorId = 3, InstitutionId = 1, Role = "Изследовател", StartYear = 2017 },
-                // Уентинг Уанг
                 new AuthorInstitution { AuthorId = 4, InstitutionId = 104, Role = "Доцент", StartYear = 2019 },
-                // Сяотинг Ниу
                 new AuthorInstitution { AuthorId = 5, InstitutionId = 104, Role = "Изследовател", StartYear = 2020 },
-                // Робърт С. Мартин
                 new AuthorInstitution { AuthorId = 6, InstitutionId = 102, Role = "Софтуерен консултант", StartYear = 2001 },
 
                 new AuthorInstitution { AuthorId = 101, InstitutionId = 101, Role = "Професор", StartYear = 2010 },
@@ -138,11 +132,11 @@ namespace ScientificAuthorsDB.Data
             );
 
             modelBuilder.Entity<PublicationField>().HasData(
-                new PublicationField { PublicationId = 1, ResearchFieldId = 1 }, // AI
-                new PublicationField { PublicationId = 1, ResearchFieldId = 2 }, // ML
-                new PublicationField { PublicationId = 2, ResearchFieldId = 3 }, // SE
-                new PublicationField { PublicationId = 3, ResearchFieldId = 3 }, // SE
-                new PublicationField { PublicationId = 3, ResearchFieldId = 4 }, // OOP
+                new PublicationField { PublicationId = 1, ResearchFieldId = 1 },
+                new PublicationField { PublicationId = 1, ResearchFieldId = 2 },
+                new PublicationField { PublicationId = 2, ResearchFieldId = 3 },
+                new PublicationField { PublicationId = 3, ResearchFieldId = 3 },
+                new PublicationField { PublicationId = 3, ResearchFieldId = 4 },
 
                 new PublicationField { PublicationId = 101, ResearchFieldId = 101 },
                 new PublicationField { PublicationId = 101, ResearchFieldId = 106 },

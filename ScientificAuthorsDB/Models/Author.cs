@@ -30,7 +30,7 @@ namespace ScientificAuthorsDB.Models
         [Display(Name = "Пълно име")]
         public string FullName => $"{FirstName} {LastName}";
 
-        // many-to-many връзки
+
         public ICollection<AuthorInstitution> AuthorInstitutions { get; set; } = new List<AuthorInstitution>();
         public ICollection<AuthorPublication> AuthorPublications { get; set; } = new List<AuthorPublication>();
     }

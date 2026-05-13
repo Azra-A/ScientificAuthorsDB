@@ -57,17 +57,47 @@ namespace ScientificAuthorsDB.Controllers
         // POST: Publications/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Publication publication, int[] selectedAuthors, int[] selectedFields)
+        public async Task<IActionResult> Create(Publication publication, int[] selectedAuthors, int[] selectedFields, IFormFile? uploadedFile)
         {
             if (ModelState.IsValid)
             {
+                // 1. Логика за запазване на файла
+                if (uploadedFile != null && uploadedFile.Length > 0)
+                {
+                    // Създаваме папка wwwroot/uploads, ако не съществува
+                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+
+                    // Генерираме уникално име, за да не се презапишат файлове с еднакви имена
+                    var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(uploadedFile.FileName);
+                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                    // Копираме файла физически в папката
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await uploadedFile.CopyToAsync(fileStream);
+                    }
+
+                    // Записваме пътя в модела, който ще се запише в базата данни
+                    publication.FilePath = "/uploads/" + uniqueFileName;
+                }
+
+                // 2. Съществуващата логика за запазване на публикацията
                 _context.Publications.Add(publication);
                 await _context.SaveChangesAsync();
 
                 if (selectedAuthors != null)
                 {
                     foreach (var authorId in selectedAuthors)
-                        _context.AuthorPublications.Add(new AuthorPublication { PublicationId = publication.Id, AuthorId = authorId });
+                        _context.AuthorPublications.Add(new AuthorPublication
+                        {
+                            PublicationId = publication.Id,
+                            AuthorId = authorId,
+                            ContributionRole = "Съавтор" // <--- Добавяме дефолтна роля
+                        });
                 }
 
                 if (selectedFields != null)
@@ -111,7 +141,7 @@ namespace ScientificAuthorsDB.Controllers
         // POST: Publications/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Publication publication, int[] selectedAuthors, int[] selectedFields)
+        public async Task<IActionResult> Edit(int id, Publication publication, int[] selectedAuthors, int[] selectedFields, IFormFile? uploadedFile)
         {
             if (id != publication.Id) return NotFound();
 
@@ -119,26 +149,66 @@ namespace ScientificAuthorsDB.Controllers
             {
                 try
                 {
+                    // 1. Проверка дали е качен НОВ файл
+                    if (uploadedFile != null && uploadedFile.Length > 0)
+                    {
+                        var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+                        if (!Directory.Exists(uploadsFolder))
+                        {
+                            Directory.CreateDirectory(uploadsFolder);
+                        }
+
+                        var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(uploadedFile.FileName);
+                        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await uploadedFile.CopyToAsync(fileStream);
+                        }
+
+                        // Записваме новия път (старият път автоматично се презаписва в обекта)
+                        publication.FilePath = "/uploads/" + uniqueFileName;
+                    }
+                    // Ако uploadedFile е null, publication.FilePath си остава със стойността 
+                    // от скритото поле във формата (т.е. запазваме стария файл)
+
                     _context.Update(publication);
 
                     // махат се старите връзки
-                    var existingAuthors = _context.AuthorPublications.Where(ap => ap.PublicationId == id);
-                    _context.AuthorPublications.RemoveRange(existingAuthors);
-
                     var existingFields = _context.PublicationFields.Where(pf => pf.PublicationId == id);
                     _context.PublicationFields.RemoveRange(existingFields);
 
                     // добавят се новите връзки
-                    if (selectedAuthors != null)
-                    {
-                        foreach (var authorId in selectedAuthors)
-                            _context.AuthorPublications.Add(new AuthorPublication { PublicationId = id, AuthorId = authorId });
-                    }
-
                     if (selectedFields != null)
                     {
                         foreach (var fieldId in selectedFields)
                             _context.PublicationFields.Add(new PublicationField { PublicationId = id, ResearchFieldId = fieldId });
+                    }
+
+                    // 1. Взимаме текущите автори от базата (с техните роли)
+                    var existingAuthors = _context.AuthorPublications.Where(ap => ap.PublicationId == id).ToList();
+
+                    // 2. Намираме кои автори са премахнати от потребителя и ги трием
+                    var authorsToRemove = existingAuthors.Where(ea => selectedAuthors == null || !selectedAuthors.Contains(ea.AuthorId)).ToList();
+                    _context.AuthorPublications.RemoveRange(authorsToRemove);
+
+                    // 3. Добавяме САМО новите автори (без да пипаме старите)
+                    if (selectedAuthors != null)
+                    {
+                        foreach (var authorId in selectedAuthors)
+                        {
+                            // Ако авторът все още не е свързан с публикацията, го свързваме
+                            if (!existingAuthors.Any(ea => ea.AuthorId == authorId))
+                            {
+                                _context.AuthorPublications.Add(new AuthorPublication
+                                {
+                                    PublicationId = id,
+                                    AuthorId = authorId,
+                                    ContributionRole = "Съавтор", // Роля по подразбиране за нови
+                                    AuthorOrder = 2
+                                });
+                            }
+                        }
                     }
 
                     await _context.SaveChangesAsync();

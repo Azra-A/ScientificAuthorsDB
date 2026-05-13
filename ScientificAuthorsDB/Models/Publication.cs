@@ -29,6 +29,10 @@ namespace ScientificAuthorsDB.Models
         [Display(Name = "Тип публикация")]
         public string PublicationType { get; set; } = "";
 
+        [Display(Name = "Път до файла")]
+        public string? FilePath { get; set; }
+
+
         public ICollection<AuthorPublication> AuthorPublications { get; set; } = new List<AuthorPublication>();
         public ICollection<PublicationField> PublicationFields { get; set; } = new List<PublicationField>();
     }

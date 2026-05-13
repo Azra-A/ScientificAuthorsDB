@@ -5,8 +5,9 @@
 
 <h2>Редактиране на публикация</h2>
 <hr />
-<form asp-action="Edit" method="post" class="row g-3">
+<form asp-action="Edit" method="post" enctype="multipart/form-data" class="row g-3">
     <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="FilePath" />
     
     <div class="col-md-12">
         <label asp-for="Title" class="form-label fw-bold">Заглавие</label>
@@ -16,6 +17,11 @@
     <div class="col-md-12">
         <label asp-for="Abstract" class="form-label fw-bold">Резюме</label>
         <textarea asp-for="Abstract" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div class="col-md-8">
+        <label asp-for="Journal" class="form-label fw-bold">Журнал / Издателство</label>
+        <input asp-for="Journal" class="form-control" />
     </div>
 
     <div class="col-md-4">
@@ -34,6 +40,26 @@
             <option value="Дисертация">Дисертация</option>
         </select>
         <span asp-validation-for="PublicationType" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-8">
+        <label asp-for="Doi" class="form-label fw-bold">DOI номер </label>
+        <input asp-for="Doi" class="form-control" />
+        <span asp-validation-for="Doi" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-12 mt-4 mb-3">
+        <label class="form-label fw-bold">Прикачи нов файл (PDF/Word)</label>
+
+        @if (!string.IsNullOrEmpty(Model.FilePath))
+        {
+            <div class="alert alert-info py-2 mb-2">
+                <i class="bi bi-info-circle"></i> Текущ файл: <a href="@Model.FilePath" target="_blank" class="fw-bold">Преглед</a>.
+                Ако изберете нов файл по-долу, той ще замени стария.
+            </div>
+        }
+
+        <input type="file" name="uploadedFile" class="form-control" accept=".pdf,.doc,.docx" />
     </div>
 
     <div class="col-md-6">

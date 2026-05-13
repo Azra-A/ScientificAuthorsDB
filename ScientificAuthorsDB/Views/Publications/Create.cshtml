@@ -5,7 +5,7 @@
 
 <h2>Добавяне на научна публикация</h2>
 <hr />
-<form asp-action="Create" method="post" class="row g-3">
+<form asp-action="Create" method="post" enctype="multipart/form-data" class="row g-3">
     <div asp-validation-summary="ModelOnly" class="col-12 text-danger"></div>
 
     <div class="col-md-12">
@@ -17,6 +17,11 @@
     <div class="col-md-12">
         <label asp-for="Abstract" class="form-label fw-bold">Резюме</label>
         <textarea asp-for="Abstract" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div class="col-md-8">
+        <label asp-for="Journal" class="form-label fw-bold">Журнал / Издателство</label>
+        <input asp-for="Journal" class="form-control" />
     </div>
 
     <div class="col-md-4">
@@ -56,4 +61,11 @@
         <button type="submit" class="btn btn-success px-4">Запази публикацията</button>
         <a asp-action="Index" class="btn btn-secondary px-4">Отказ</a>
     </div>
+
+    <div class="col-md-12 mt-3">
+        <label class="form-label fw-bold">Прикачи файл (PDF/Word)</label>
+        <input type="file" name="uploadedFile" class="form-control" accept=".pdf,.doc,.docx" />
+        <small class="text-muted">Максимален размер: позволен от сървъра (обикновено до 28MB по подразбиране).</small>
+    </div>
+
 </form>

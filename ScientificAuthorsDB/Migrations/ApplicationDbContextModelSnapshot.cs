@@ -56,6 +56,60 @@ namespace ScientificAuthorsDB.Migrations
                         new
                         {
                             Id = 1,
+                            BirthYear = 1985,
+                            Email = "avaswani@google.com",
+                            FirstName = "Ашиш",
+                            LastName = "Васвани",
+                            OrcidId = "0000-0001-1111-0001"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BirthYear = 1976,
+                            Email = "noam@google.com",
+                            FirstName = "Ноам",
+                            LastName = "Шазиър",
+                            OrcidId = "0000-0001-1111-0002"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BirthYear = 1988,
+                            Email = "illia@near.org",
+                            FirstName = "Илия",
+                            LastName = "Полосухин",
+                            OrcidId = "0000-0001-1111-0003"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BirthYear = 1990,
+                            Email = "w.wang@se-research.org",
+                            FirstName = "Уентинг",
+                            LastName = "Уанг",
+                            OrcidId = "0000-0001-1111-0004"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BirthYear = 1989,
+                            Email = "x.niu@se-research.org",
+                            FirstName = "Сяотинг",
+                            LastName = "Ниу",
+                            OrcidId = "0000-0001-1111-0005"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BirthYear = 1952,
+                            Email = "unclebob@cleancoder.com",
+                            FirstName = "Робърт С.",
+                            LastName = "Мартин",
+                            OrcidId = "0000-0001-1111-0006"
+                        },
+                        new
+                        {
+                            Id = 101,
                             BirthYear = 1975,
                             Email = "ivan@su.bg",
                             FirstName = "Иван",
@@ -64,7 +118,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 102,
                             BirthYear = 1980,
                             Email = "maria@bas.bg",
                             FirstName = "Мария",
@@ -73,7 +127,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 103,
                             BirthYear = 1990,
                             Email = "g.dimitrov@tu.bg",
                             FirstName = "Георги",
@@ -82,7 +136,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 104,
                             BirthYear = 1978,
                             Email = "jsmith@mit.edu",
                             FirstName = "Джон",
@@ -91,7 +145,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 105,
                             BirthYear = 1985,
                             Email = "elena.n@mu-plovdiv.bg",
                             FirstName = "Елена",
@@ -100,7 +154,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 106,
                             BirthYear = 1982,
                             Email = "alice.j@oxford.ac.uk",
                             FirstName = "Алис",
@@ -109,7 +163,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 107,
                             BirthYear = 1970,
                             Email = "p.todorov@unwe.bg",
                             FirstName = "Петър",
@@ -118,7 +172,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 108,
                             BirthYear = 1965,
                             Email = "hmuller@mpg.de",
                             FirstName = "Ханс",
@@ -127,7 +181,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 109,
                             BirthYear = 1988,
                             Email = "smiteva@cern.ch",
                             FirstName = "Силвия",
@@ -136,7 +190,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 110,
                             BirthYear = 1992,
                             Email = "rbrown@stanford.edu",
                             FirstName = "Робърт",
@@ -173,76 +227,118 @@ namespace ScientificAuthorsDB.Migrations
                         {
                             AuthorId = 1,
                             InstitutionId = 1,
-                            Role = "Професор",
-                            StartYear = 2010
-                        },
-                        new
-                        {
-                            AuthorId = 1,
-                            InstitutionId = 3,
-                            Role = "Гост-изследовател",
-                            StartYear = 2015
+                            Role = "Старши изследовател",
+                            StartYear = 2016
                         },
                         new
                         {
                             AuthorId = 2,
-                            InstitutionId = 3,
-                            Role = "Главен асистент",
-                            StartYear = 2012
+                            InstitutionId = 1,
+                            Role = "Главен инженер",
+                            StartYear = 2015
                         },
                         new
                         {
                             AuthorId = 3,
-                            InstitutionId = 5,
-                            Role = "Доцент",
-                            StartYear = 2018
+                            InstitutionId = 1,
+                            Role = "Изследовател",
+                            StartYear = 2017
                         },
                         new
                         {
                             AuthorId = 4,
-                            InstitutionId = 2,
-                            Role = "Професор",
-                            StartYear = 2005
+                            InstitutionId = 104,
+                            Role = "Доцент",
+                            StartYear = 2019
                         },
                         new
                         {
                             AuthorId = 5,
-                            InstitutionId = 8,
-                            Role = "Асистент",
+                            InstitutionId = 104,
+                            Role = "Изследовател",
                             StartYear = 2020
                         },
                         new
                         {
                             AuthorId = 6,
-                            InstitutionId = 4,
+                            InstitutionId = 102,
+                            Role = "Софтуерен консултант",
+                            StartYear = 2001
+                        },
+                        new
+                        {
+                            AuthorId = 101,
+                            InstitutionId = 101,
+                            Role = "Професор",
+                            StartYear = 2010
+                        },
+                        new
+                        {
+                            AuthorId = 101,
+                            InstitutionId = 103,
+                            Role = "Гост-изследовател",
+                            StartYear = 2015
+                        },
+                        new
+                        {
+                            AuthorId = 102,
+                            InstitutionId = 103,
+                            Role = "Главен асистент",
+                            StartYear = 2012
+                        },
+                        new
+                        {
+                            AuthorId = 103,
+                            InstitutionId = 105,
+                            Role = "Доцент",
+                            StartYear = 2018
+                        },
+                        new
+                        {
+                            AuthorId = 104,
+                            InstitutionId = 102,
+                            Role = "Професор",
+                            StartYear = 2005
+                        },
+                        new
+                        {
+                            AuthorId = 105,
+                            InstitutionId = 108,
+                            Role = "Асистент",
+                            StartYear = 2020
+                        },
+                        new
+                        {
+                            AuthorId = 106,
+                            InstitutionId = 104,
                             Role = "Изследовател",
                             StartYear = 2016
                         },
                         new
                         {
-                            AuthorId = 7,
-                            InstitutionId = 10,
+                            AuthorId = 107,
+                            InstitutionId = 110,
                             Role = "Професор",
                             StartYear = 2008
                         },
                         new
                         {
-                            AuthorId = 8,
-                            InstitutionId = 9,
+                            AuthorId = 108,
+                            InstitutionId = 109,
                             Role = "Директор",
                             StartYear = 2000
                         },
                         new
                         {
-                            AuthorId = 9,
-                            InstitutionId = 6,
+                            AuthorId = 109,
+                            InstitutionId = 106,
                             Role = "Физик",
                             StartYear = 2019
                         },
                         new
                         {
-                            AuthorId = 10,
-                            InstitutionId = 7,
+                            AuthorId = 110,
+                            InstitutionId = 107,
                             Role = "Докторант",
                             StartYear = 2021
                         });
@@ -278,164 +374,101 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            AuthorId = 5,
+                            AuthorId = 2,
                             PublicationId = 1,
                             AuthorOrder = 2,
                             ContributionRole = "Съавтор"
                         },
                         new
                         {
-                            AuthorId = 9,
-                            PublicationId = 2,
-                            AuthorOrder = 1,
-                            ContributionRole = "Водещ автор"
-                        },
-                        new
-                        {
-                            AuthorId = 4,
-                            PublicationId = 2,
-                            AuthorOrder = 2,
-                            ContributionRole = "Съавтор"
-                        },
-                        new
-                        {
-                            AuthorId = 7,
-                            PublicationId = 3,
-                            AuthorOrder = 1,
-                            ContributionRole = "Водещ автор"
-                        },
-                        new
-                        {
-                            AuthorId = 10,
-                            PublicationId = 3,
-                            AuthorOrder = 2,
-                            ContributionRole = "Съавтор"
-                        },
-                        new
-                        {
-                            AuthorId = 5,
-                            PublicationId = 4,
-                            AuthorOrder = 1,
-                            ContributionRole = "Единствен автор"
-                        },
-                        new
-                        {
                             AuthorId = 3,
-                            PublicationId = 5,
-                            AuthorOrder = 1,
-                            ContributionRole = "Водещ автор"
-                        },
-                        new
-                        {
-                            AuthorId = 8,
-                            PublicationId = 5,
-                            AuthorOrder = 2,
-                            ContributionRole = "Съавтор"
-                        },
-                        new
-                        {
-                            AuthorId = 1,
-                            PublicationId = 6,
-                            AuthorOrder = 1,
-                            ContributionRole = "Водещ автор"
-                        },
-                        new
-                        {
-                            AuthorId = 3,
-                            PublicationId = 6,
-                            AuthorOrder = 2,
-                            ContributionRole = "Съавтор"
-                        },
-                        new
-                        {
-                            AuthorId = 10,
-                            PublicationId = 6,
+                            PublicationId = 1,
                             AuthorOrder = 3,
                             ContributionRole = "Съавтор"
                         },
                         new
                         {
-                            AuthorId = 9,
-                            PublicationId = 7,
+                            AuthorId = 4,
+                            PublicationId = 2,
                             AuthorOrder = 1,
                             ContributionRole = "Водещ автор"
                         },
                         new
                         {
-                            AuthorId = 6,
-                            PublicationId = 7,
+                            AuthorId = 5,
+                            PublicationId = 2,
                             AuthorOrder = 2,
                             ContributionRole = "Съавтор"
                         },
                         new
                         {
-                            AuthorId = 2,
-                            PublicationId = 8,
+                            AuthorId = 6,
+                            PublicationId = 3,
                             AuthorOrder = 1,
                             ContributionRole = "Единствен автор"
                         },
                         new
                         {
-                            AuthorId = 5,
-                            PublicationId = 9,
+                            AuthorId = 101,
+                            PublicationId = 101,
                             AuthorOrder = 1,
                             ContributionRole = "Водещ автор"
                         },
                         new
                         {
-                            AuthorId = 6,
-                            PublicationId = 9,
+                            AuthorId = 105,
+                            PublicationId = 101,
                             AuthorOrder = 2,
                             ContributionRole = "Съавтор"
                         },
                         new
                         {
-                            AuthorId = 7,
-                            PublicationId = 10,
+                            AuthorId = 109,
+                            PublicationId = 102,
                             AuthorOrder = 1,
                             ContributionRole = "Водещ автор"
                         },
                         new
                         {
-                            AuthorId = 3,
-                            PublicationId = 11,
-                            AuthorOrder = 1,
-                            ContributionRole = "Главен изследовател"
-                        },
-                        new
-                        {
-                            AuthorId = 9,
-                            PublicationId = 12,
-                            AuthorOrder = 1,
-                            ContributionRole = "Единствен автор"
-                        },
-                        new
-                        {
-                            AuthorId = 2,
-                            PublicationId = 13,
-                            AuthorOrder = 1,
-                            ContributionRole = "Координатор"
-                        },
-                        new
-                        {
-                            AuthorId = 8,
-                            PublicationId = 13,
+                            AuthorId = 104,
+                            PublicationId = 102,
                             AuthorOrder = 2,
-                            ContributionRole = "Рецензент"
+                            ContributionRole = "Съавтор"
                         },
                         new
                         {
-                            AuthorId = 5,
-                            PublicationId = 14,
+                            AuthorId = 107,
+                            PublicationId = 103,
                             AuthorOrder = 1,
                             ContributionRole = "Водещ автор"
                         },
                         new
                         {
-                            AuthorId = 7,
-                            PublicationId = 15,
+                            AuthorId = 110,
+                            PublicationId = 103,
+                            AuthorOrder = 2,
+                            ContributionRole = "Съавтор"
+                        },
+                        new
+                        {
+                            AuthorId = 105,
+                            PublicationId = 104,
                             AuthorOrder = 1,
                             ContributionRole = "Единствен автор"
+                        },
+                        new
+                        {
+                            AuthorId = 103,
+                            PublicationId = 105,
+                            AuthorOrder = 1,
+                            ContributionRole = "Водещ автор"
+                        },
+                        new
+                        {
+                            AuthorId = 108,
+                            PublicationId = 105,
+                            AuthorOrder = 2,
+                            ContributionRole = "Съавтор"
                         });
                 });
 
@@ -472,6 +505,15 @@ namespace ScientificAuthorsDB.Migrations
                         new
                         {
                             Id = 1,
+                            City = "Маунтин Вю",
+                            Country = "САЩ",
+                            Name = "Google Brain",
+                            Type = "Изследователски център",
+                            Website = "https://research.google"
+                        },
+                        new
+                        {
+                            Id = 101,
                             City = "София",
                             Country = "България",
                             Name = "Софийски университет",
@@ -480,7 +522,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 102,
                             City = "Кеймбридж",
                             Country = "САЩ",
                             Name = "МИТ (MIT)",
@@ -489,7 +531,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 103,
                             City = "София",
                             Country = "България",
                             Name = "БАН",
@@ -498,7 +540,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 104,
                             City = "Оксфорд",
                             Country = "Великобритания",
                             Name = "Оксфордски университет",
@@ -507,7 +549,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 105,
                             City = "София",
                             Country = "България",
                             Name = "Технически университет",
@@ -516,7 +558,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 106,
                             City = "Женева",
                             Country = "Швейцария",
                             Name = "ЦЕРН",
@@ -525,7 +567,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 107,
                             City = "Станфорд",
                             Country = "САЩ",
                             Name = "Станфордски университет",
@@ -534,7 +576,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 108,
                             City = "Пловдив",
                             Country = "България",
                             Name = "Медицински университет",
@@ -543,7 +585,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 109,
                             City = "Мюнхен",
                             Country = "Германия",
                             Name = "Институт 'Макс Планк'",
@@ -552,7 +594,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 110,
                             City = "София",
                             Country = "България",
                             Name = "УНСС",
@@ -573,6 +615,9 @@ namespace ScientificAuthorsDB.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Doi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Journal")
@@ -598,6 +643,36 @@ namespace ScientificAuthorsDB.Migrations
                         new
                         {
                             Id = 1,
+                            Abstract = "Доминиращите модели за преобразуване на последователности се основават на сложни рекурентни или конволюционни невронни мрежи. Ние предлагаме нова проста мрежова архитектура, наречена Transformer (Трансформатор), базирана изцяло на механизми за внимание, като напълно премахва необходимостта от рекурентност и конволюции.",
+                            Doi = "10.48550/arXiv.1706.03762",
+                            Journal = "31-ва Конференция по системи за обработка на невронна информация (NIPS)",
+                            PublicationType = "Доклад от конференция",
+                            Title = "Вниманието е всичко, от което имате нужда",
+                            Year = 2017
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Abstract = "Ние систематично анализираме скорошни публикации по софтуерно инженерство, за да изследваме наличието, местоположението, форматите и дълготрайността на споделените артефакти. Нашите открития предоставят изчерпателен преглед на текущите практики и насоки за бъдещи възпроизводими изследвания.",
+                            Doi = "10.1016/j.jss.2024.112032",
+                            Journal = "Журнал за системи и софтуер",
+                            PublicationType = "Научна статия",
+                            Title = "Изследователски артефакти в публикациите по софтуерно инженерство: Състояние и тенденции",
+                            Year = 2024
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Abstract = "Дори лошият код може да функционира. Но ако кодът не е чист, той може да срине една организация за разработка. Тази книга ви учи как да пишете чист, лесен за поддръжка и четим код, превръщайки ви в истински софтуерен майстор.",
+                            Doi = "9780132350884",
+                            Journal = "Издателство Prentice Hall",
+                            PublicationType = "Книга",
+                            Title = "Чист код: Наръчник за гъвкаво софтуерно майсторство",
+                            Year = 2008
+                        },
+                        new
+                        {
+                            Id = 101,
                             Abstract = "Изследване на приложението на невронни мрежи за ранна диагностика.",
                             Doi = "10.1038/s41586-022-00001",
                             Journal = "Природа",
@@ -607,7 +682,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 102,
                             Abstract = "Анализ на новите методи за стабилизиране на кубити.",
                             Doi = "10.1126/science.abn0002",
                             Journal = "Наука",
@@ -617,7 +692,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 103,
                             Doi = "10.1016/j.ecotod.2021.0003",
                             Journal = "Икономика днес",
                             PublicationType = "Доклад от конференция",
@@ -626,7 +701,7 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 104,
                             Abstract = "Картографиране на генома при редки заболявания.",
                             Doi = "10.1016/j.cell.2020.0004",
                             Journal = "Клетка",
@@ -636,104 +711,11 @@ namespace ScientificAuthorsDB.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 105,
                             Doi = "10.5555/nano-book-2023",
                             Journal = "Издателство 'Наука'",
                             PublicationType = "Монография",
                             Title = "Нови материали в нанотехнологиите",
-                            Year = 2023
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Doi = "10.1109/TNNLS.2019.0006",
-                            Journal = "Инженерни науки",
-                            PublicationType = "Научна статия",
-                            Title = "Алгоритми за оптимизация на невронни мрежи",
-                            Year = 2019
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Abstract = "Моделиране на разпределението на тъмната материя в близките галактики.",
-                            Doi = "10.3847/1538-4357/ac0007",
-                            Journal = "Астрофизичен журнал",
-                            PublicationType = "Научна статия",
-                            Title = "Тъмна материя и структура на Вселената",
-                            Year = 2022
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Doi = "10.1002/ecy.0008",
-                            Journal = "Екология",
-                            PublicationType = "Книга",
-                            Title = "Влияние на климата върху биоразнообразието",
-                            Year = 2021
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Doi = "10.1016/S0140-6736(20)0009",
-                            Journal = "Списание Ланцет",
-                            PublicationType = "Научна статия",
-                            Title = "Разработване на ваксини чрез мРНК",
-                            Year = 2020
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Doi = "10.1111/jofi.0010",
-                            Journal = "Журнал по финанси",
-                            PublicationType = "Доклад от конференция",
-                            Title = "Криптовалути и икономическа стабилност",
-                            Year = 2023
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Doi = "10.5555/techpol-2023-011",
-                            Journal = "Институт за технологични политики",
-                            PublicationType = "Доклад от конференция",
-                            Title = "Анализ на киберсигурността в държавния сектор",
-                            Year = 2023
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Abstract = "Теоретичен модел за изпарението на свръхмасивни черни дупки.",
-                            Doi = "10.5555/su-thesis-2018-012",
-                            Journal = "Софийски университет",
-                            PublicationType = "Дисертация",
-                            Title = "Еволюция на черните дупки",
-                            Year = 2018
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Doi = "10.5555/moew-report-2022",
-                            Journal = "Министерство на екологията",
-                            PublicationType = "Монография",
-                            Title = "Годишен доклад за състоянието на околната среда",
-                            Year = 2022
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Abstract = "Обзор на най-новите клинични проучвания.",
-                            Doi = "10.5555/medrev-2021-014",
-                            Journal = "Медицински преглед",
-                            PublicationType = "Научна статия",
-                            Title = "Съвременни методи за лечение на диабет",
-                            Year = 2021
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Doi = "10.5555/bas-econ-2023-015",
-                            Journal = "Икономически институт",
-                            PublicationType = "Доклад от конференция",
-                            Title = "Въздействие на инфлацията върху малкия бизнес",
                             Year = 2023
                         });
                 });
@@ -761,112 +743,72 @@ namespace ScientificAuthorsDB.Migrations
                         new
                         {
                             PublicationId = 1,
-                            ResearchFieldId = 6
-                        },
-                        new
-                        {
-                            PublicationId = 2,
                             ResearchFieldId = 2
                         },
                         new
                         {
                             PublicationId = 2,
-                            ResearchFieldId = 1
-                        },
-                        new
-                        {
-                            PublicationId = 3,
-                            ResearchFieldId = 1
-                        },
-                        new
-                        {
-                            PublicationId = 3,
-                            ResearchFieldId = 7
-                        },
-                        new
-                        {
-                            PublicationId = 4,
-                            ResearchFieldId = 4
-                        },
-                        new
-                        {
-                            PublicationId = 4,
-                            ResearchFieldId = 6
-                        },
-                        new
-                        {
-                            PublicationId = 5,
-                            ResearchFieldId = 5
-                        },
-                        new
-                        {
-                            PublicationId = 5,
-                            ResearchFieldId = 2
-                        },
-                        new
-                        {
-                            PublicationId = 6,
-                            ResearchFieldId = 1
-                        },
-                        new
-                        {
-                            PublicationId = 6,
                             ResearchFieldId = 3
                         },
                         new
                         {
-                            PublicationId = 7,
-                            ResearchFieldId = 2
+                            PublicationId = 3,
+                            ResearchFieldId = 3
                         },
                         new
                         {
-                            PublicationId = 8,
+                            PublicationId = 3,
                             ResearchFieldId = 4
                         },
                         new
                         {
-                            PublicationId = 9,
-                            ResearchFieldId = 6
+                            PublicationId = 101,
+                            ResearchFieldId = 101
                         },
                         new
                         {
-                            PublicationId = 9,
-                            ResearchFieldId = 4
+                            PublicationId = 101,
+                            ResearchFieldId = 106
                         },
                         new
                         {
-                            PublicationId = 10,
-                            ResearchFieldId = 7
+                            PublicationId = 102,
+                            ResearchFieldId = 102
                         },
                         new
                         {
-                            PublicationId = 11,
-                            ResearchFieldId = 1
+                            PublicationId = 102,
+                            ResearchFieldId = 101
                         },
                         new
                         {
-                            PublicationId = 12,
-                            ResearchFieldId = 2
+                            PublicationId = 103,
+                            ResearchFieldId = 101
                         },
                         new
                         {
-                            PublicationId = 13,
-                            ResearchFieldId = 4
+                            PublicationId = 103,
+                            ResearchFieldId = 107
                         },
                         new
                         {
-                            PublicationId = 13,
-                            ResearchFieldId = 5
+                            PublicationId = 104,
+                            ResearchFieldId = 104
                         },
                         new
                         {
-                            PublicationId = 14,
-                            ResearchFieldId = 6
+                            PublicationId = 104,
+                            ResearchFieldId = 106
                         },
                         new
                         {
-                            PublicationId = 15,
-                            ResearchFieldId = 7
+                            PublicationId = 105,
+                            ResearchFieldId = 105
+                        },
+                        new
+                        {
+                            PublicationId = 105,
+                            ResearchFieldId = 102
                         });
                 });
 
@@ -894,36 +836,56 @@ namespace ScientificAuthorsDB.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Информатика"
+                            Name = "Изкуствен интелект"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Физика"
+                            Name = "Машинно обучение"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Математика"
+                            Name = "Софтуерно инженерство"
                         },
                         new
                         {
                             Id = 4,
+                            Name = "Обектно-ориентирано програмиране"
+                        },
+                        new
+                        {
+                            Id = 101,
+                            Name = "Информатика"
+                        },
+                        new
+                        {
+                            Id = 102,
+                            Name = "Физика"
+                        },
+                        new
+                        {
+                            Id = 103,
+                            Name = "Математика"
+                        },
+                        new
+                        {
+                            Id = 104,
                             Name = "Биология"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 105,
                             Name = "Химия"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 106,
                             Name = "Медицина"
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 107,
                             Name = "Икономика"
                         });
                 });

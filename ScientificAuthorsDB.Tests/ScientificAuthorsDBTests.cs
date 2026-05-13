@@ -57,20 +57,20 @@ namespace ScientificAuthorsDB.Tests
             var pub2 = new Publication { Id = 2, Title = "Квантови изчисления", Year = 2023, Journal = "Science", PublicationType = "Article" };
             context.Publications.AddRange(pub1, pub2);
 
-            // Релации Author <-> Institution
+            // Релации Автор <-> Институция
             context.AuthorInstitutions.AddRange(
                 new AuthorInstitution { AuthorId = 1, InstitutionId = 1, Role = "Professor" },
                 new AuthorInstitution { AuthorId = 2, InstitutionId = 2, Role = "Researcher" }
             );
 
-            // Релации Author <-> Publication
+            // Релации Автор <-> Публикация
             context.AuthorPublications.AddRange(
                 new AuthorPublication { AuthorId = 1, PublicationId = 1, ContributionRole = "Lead Author", AuthorOrder = 1 },
                 new AuthorPublication { AuthorId = 2, PublicationId = 1, ContributionRole = "Co-Author", AuthorOrder = 2 },
                 new AuthorPublication { AuthorId = 2, PublicationId = 2, ContributionRole = "Lead Author", AuthorOrder = 1 }
             );
 
-            // Релации Publication <-> ResearchField
+            // Релации Публикация <-> Научна област
             context.PublicationFields.AddRange(
                 new PublicationField { PublicationId = 1, ResearchFieldId = 1 },
                 new PublicationField { PublicationId = 2, ResearchFieldId = 2 }
@@ -80,6 +80,8 @@ namespace ScientificAuthorsDB.Tests
             return context;
         }
     }
+
+
 
     //  ТЕСТ 1 
     public class Test1_AddAuthor

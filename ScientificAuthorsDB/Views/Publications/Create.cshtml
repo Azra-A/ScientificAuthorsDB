@@ -47,24 +47,24 @@
         <input asp-for="Doi" class="form-control" />
     </div>
 
+    <div class="col-md-12 mt-3">
+        <label class="form-label fw-bold">Прикачи файл (PDF/Word)</label>
+        <input type="file" name="uploadedFile" class="form-control" accept=".pdf,.doc,.docx" />
+    </div>
+
     <div class="col-md-6">
         <label class="form-label fw-bold">Избери автори (задръж Ctrl)</label>
         <select name="selectedAuthors" asp-items="ViewBag.Authors" class="form-select" multiple size="6"></select>
     </div>
 
     <div class="col-md-6">
-        <label class="form-label fw-bold">Избери научни области (задръж Ctrl)</label>
+        <label class="form-label fw-bold">Избери научни области (задръжте Ctrl за избор на повече от една)</label>
         <select name="selectedFields" asp-items="ViewBag.Fields" class="form-select" multiple size="6"></select>
     </div>
 
     <div class="col-12 mt-4">
         <button type="submit" class="btn btn-success px-4">Запази публикацията</button>
         <a asp-action="Index" class="btn btn-secondary px-4">Отказ</a>
-    </div>
-
-    <div class="col-md-12 mt-3">
-        <label class="form-label fw-bold">Прикачи файл (PDF/Word)</label>
-        <input type="file" name="uploadedFile" class="form-control" accept=".pdf,.doc,.docx" />
     </div>
 
 </form>

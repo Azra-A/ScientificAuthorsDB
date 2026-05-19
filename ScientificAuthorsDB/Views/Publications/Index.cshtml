@@ -31,38 +31,45 @@
     </div>
 </form>
 
-<div class="row">
-    @foreach (var pub in Model)
-    {
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 border-start border-primary border-4 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title fw-bold text-dark">@pub.Title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">@pub.Year | @pub.PublicationType</h6>
-                    <p class="card-text">
-                        <strong>Автори:</strong>
-                        @string.Join(", ", pub.AuthorPublications.Select(ap => ap.Author.FullName))
-                    </p>
-                    <div class="mb-3">
-                        @foreach (var pf in pub.PublicationFields)
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Няма намерени публикации.</div>
+}
+else
+{
+    <div class="row">
+        @foreach (var pub in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-start border-primary border-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-dark">@pub.Title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@pub.Year | @pub.PublicationType</h6>
+                        <p class="card-text">
+                            <strong>Автори:</strong>
+                            @string.Join(", ", pub.AuthorPublications.Select(ap => ap.Author.FullName))
+                        </p>
+                        <div class="mb-3">
+                            @foreach (var pf in pub.PublicationFields)
+                            {
+                                <span class="badge rounded-pill bg-success me-1">@pf.ResearchField.Name</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 d-flex gap-2">
+                        @if (Context.Session.GetString("Mode") == "Admin")
                         {
-                            <span class="badge rounded-pill bg-success me-1">@pf.ResearchField.Name</span>
+                            <a asp-action="Details" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-info">Детайли</a>
+                            <a asp-action="Edit" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-warning">Редактирай</a>
+                            <a asp-action="Delete" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-danger">Изтрий</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-route-id="@pub.Id" class="btn btn-outline-info w-100">Детайли</a>
                         }
                     </div>
                 </div>
-                <div class="card-footer bg-transparent border-top-0 d-flex gap-2">
-                    @if (Context.Session.GetString("Mode") == "Admin")
-                    {
-                        <a asp-action="Details" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-info">Детайли</a>
-                        <a asp-action="Edit" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-warning">Редактирай</a>
-                        <a asp-action="Delete" asp-route-id="@pub.Id" class="btn btn-sm btn-outline-danger">Изтрий</a>
-                    }
-                    else
-                    {
-                        <a asp-action="Details" asp-route-id="@pub.Id" class="btn btn-outline-info w-100">Детайли</a>
-                    }
-                </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+}

@@ -24,31 +24,31 @@ namespace ScientificAuthorsDB.Tests
         {
             var context = CreateInMemoryDb(dbName);
 
-            var su = new Institution { Id = 1, Name = "Софийски университет", Country = "България", City = "София", Type = "University" };
-            var bas = new Institution { Id = 2, Name = "БАН", Country = "България", City = "София", Type = "Research Center" };
+            var su = new Institution { Id = 1, Name = "Софийски университет", Country = "България", City = "София", Type = "Университет" };
+            var bas = new Institution { Id = 2, Name = "БАН", Country = "България", City = "София", Type = "Научен институт" };
             context.Institutions.AddRange(su, bas);
 
-            var cs = new ResearchField { Id = 1, Name = "Computer Science" };
-            var math = new ResearchField { Id = 2, Name = "Mathematics" };
+            var cs = new ResearchField { Id = 1, Name = "Компютърни науки" };
+            var math = new ResearchField { Id = 2, Name = "Математика" };
             context.ResearchFields.AddRange(cs, math);
 
             var author1 = new Author { Id = 1, FirstName = "Иван", LastName = "Петров", Email = "ivan@su.bg", BirthYear = 1975 };
             var author2 = new Author { Id = 2, FirstName = "Мария", LastName = "Иванова", Email = "maria@bas.bg", BirthYear = 1980 };
             context.Authors.AddRange(author1, author2);
 
-            var pub1 = new Publication { Id = 1, Title = "Machine Learning в медицината", Year = 2022, Journal = "Nature", PublicationType = "Article" };
-            var pub2 = new Publication { Id = 2, Title = "Квантови изчисления", Year = 2023, Journal = "Science", PublicationType = "Article" };
+            var pub1 = new Publication { Id = 1, Title = "Machine Learning в медицината", Year = 2022, Journal = "Nature", PublicationType = "Статия" };
+            var pub2 = new Publication { Id = 2, Title = "Квантови изчисления", Year = 2023, Journal = "Science", PublicationType = "Статия" };
             context.Publications.AddRange(pub1, pub2);
 
             context.AuthorInstitutions.AddRange(
-                new AuthorInstitution { AuthorId = 1, InstitutionId = 1, Role = "Professor" },
-                new AuthorInstitution { AuthorId = 2, InstitutionId = 2, Role = "Researcher" }
+                new AuthorInstitution { AuthorId = 1, InstitutionId = 1, Role = "Професор" },
+                new AuthorInstitution { AuthorId = 2, InstitutionId = 2, Role = "Изследовател" }
             );
 
             context.AuthorPublications.AddRange(
-                new AuthorPublication { AuthorId = 1, PublicationId = 1, ContributionRole = "Lead Author", AuthorOrder = 1 },
-                new AuthorPublication { AuthorId = 2, PublicationId = 1, ContributionRole = "Co-Author", AuthorOrder = 2 },
-                new AuthorPublication { AuthorId = 2, PublicationId = 2, ContributionRole = "Lead Author", AuthorOrder = 1 }
+                new AuthorPublication { AuthorId = 1, PublicationId = 1, ContributionRole = "Водещ автор", AuthorOrder = 1 },
+                new AuthorPublication { AuthorId = 2, PublicationId = 1, ContributionRole = "Съавтор", AuthorOrder = 2 },
+                new AuthorPublication { AuthorId = 2, PublicationId = 2, ContributionRole = "Водещ автор", AuthorOrder = 1 }
             );
 
             context.PublicationFields.AddRange(
@@ -125,7 +125,7 @@ namespace ScientificAuthorsDB.Tests
             Assert.NotNull(relation);
             Assert.Equal("Иван", relation.Author.FirstName);
             Assert.Equal("Софийски университет", relation.Institution.Name);
-            Assert.Equal("Professor", relation.Role);
+            Assert.Equal("Професор", relation.Role);
         }
     }
 
@@ -181,22 +181,20 @@ namespace ScientificAuthorsDB.Tests
                 Id = 3,
                 Title = "Квантова физика - учебник",
                 Year = 2021,
-                PublicationType = "Book"
+                PublicationType = "Книга"
             });
             await context.SaveChangesAsync();
 
             var controller = new PublicationsController(context);
 
-            var result = await controller.Index(searchTitle: null, searchType: "Article");
+            var result = await controller.Index(searchTitle: null, searchType: "Статия");
 
             var viewResult = Assert.IsType<ViewResult>(result);
             var model = Assert.IsAssignableFrom<IEnumerable<Publication>>(viewResult.Model);
             var list = model.ToList();
 
             Assert.Equal(2, list.Count);
-            Assert.All(list, p => Assert.Equal("Article", p.PublicationType));
+            Assert.All(list, p => Assert.Equal("Статия", p.PublicationType));
         }
     }
-
-   
 }
